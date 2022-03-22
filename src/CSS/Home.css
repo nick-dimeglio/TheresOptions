@@ -1,0 +1,127 @@
+.homeContainer {
+	width: 100%;
+	min-height: 100vh;
+}
+
+.homeHeader {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.homeHeaderImage {
+	height: 20vh;
+	object-fit: contain;
+	padding-top: 5vh;
+}
+
+.homeSearchBarContainer {
+	width: 100%;
+	display: flex;
+	padding-top: 5vh;
+	justify-content: center;
+}
+
+.homeSearchBar {
+	display: flex;
+	justify-content: center;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 2px solid #00873c;
+}
+
+.homeSelect {
+	appearance: none;
+	outline: 0;
+	border: 0;
+	box-shadow: none;
+
+	display: flex;
+	padding: 5px;
+	font-family: 'Inter', sans-serif;
+	text-align: center;
+	font-size: 24px;
+	color: #414141;
+	width: 50vw;
+	height: 50px;
+	cursor: pointer;
+	background: url(https://upload.wikimedia.org/wikipedia/commons/9/9a/Caret_down_font_awesome.svg) no-repeat right 0.8em center / 1.4em,
+		white;
+}
+
+/* IE ARROW REMOVED */
+select::-ms-expand {
+	display: none;
+}
+
+.homeContentContainer {
+	width: 100%;
+	min-height: 45vh;
+	padding-top: 5vh;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+}
+
+.homeContentButtonsContainer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 65%;
+	height: 100px;
+	border-bottom: 2px solid #00873c;
+	padding: 5px;
+}
+
+.homeContentButton {
+	outline: 0;
+	border: 0;
+	width: 20%;
+	height: 65%;
+	background-color: #d7d7d7;
+	color: #414141;
+	cursor: pointer;
+	border-radius: 16px;
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	overflow: hidden;
+	transition: 450ms;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Hover effects below alongside the active version of the button */
+
+.homeContentButton:hover {
+	transform: scale(1.05) translate(0, -5px);
+	color: white;
+	background-color: #00873c;
+	border: 1px solid #181818;
+}
+
+.homeContentButtonActive {
+	outline: 0;
+	border: 0;
+	width: 20%;
+	height: 65%;
+	background-color: #00873c;
+	color: white;
+	cursor: pointer;
+	border-radius: 16px;
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	overflow: hidden;
+	transition: 450ms;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border: 1px solid #181818;
+	transform: scale(1.05) translate(0, -5px);
+}
+
+.homeComponentContainer {
+	display: flex;
+	padding-top: 5vh;
+	width: 75%;
+}

@@ -18,9 +18,9 @@ export default class Home extends React.Component{
 
     render(){
         /* Define styles for buttons based on which one is active */
-        const newsStyle = this.state.activeComponent == 'news' ? 'homeContentButtonActive' : 'homeContentButton',
-            performersStyle = this.state.activeComponent == 'performers' ? 'homeContentButtonActive' : 'homeContentButton',
-            bigPlayersStyle = this.state.activeComponent == 'bigplayers' ? 'homeContentButtonActive' : 'homeContentButton';
+        const newsStyle = this.state.activeComponent === 'news' ? 'homeContentButtonActive' : 'homeContentButton',
+            performersStyle = this.state.activeComponent === 'performers' ? 'homeContentButtonActive' : 'homeContentButton',
+            bigPlayersStyle = this.state.activeComponent === 'bigplayers' ? 'homeContentButtonActive' : 'homeContentButton';
 
       return(
 
@@ -46,7 +46,7 @@ export default class Home extends React.Component{
             </div>
             {/* Sending active content state to the component handler in order to return the desired content*/}
             <div className='homeComponentContainer'>
-                <ComponentHandler activeComponent={this.state.activeComponent}/>
+                <ComponentHandler activeComponent={this.state.activeComponent} stockCategory={this.state.stockCategory}/>
             </div>
         </div>
 

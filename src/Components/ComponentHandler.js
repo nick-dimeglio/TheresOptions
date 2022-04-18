@@ -7,7 +7,10 @@ export default class ComponentHandler extends React.Component{
     render(){
         if(this.props.activeComponent === "news"){
             return(
-                <News/>
+                <News AAPLNewsTitle = {this.props.AAPLNewsTitle} AAPLNewsURL= {this.props.AAPLNewsURL} AAPLNewsPublisher = {this.props.AAPLNewsPublisher}
+                      MSFTNewsTitle = {this.props.MSFTNewsTitle} MSFTNewsURL= {this.props.MSFTNewsURL} MSFTNewsPublisher = {this.props.MSFTNewsPublisher}
+                      GOOGLNewsTitle = {this.props.GOOGLNewsTitle} GOOGLNewsURL= {this.props.GOOGLNewsURL} GOOGLNewsPublisher = {this.props.GOOGLNewsPublisher}
+                />
             )
         }
         else if(this.props.activeComponent === 'bigplayers'){

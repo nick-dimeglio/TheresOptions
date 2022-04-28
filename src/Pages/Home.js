@@ -34,14 +34,17 @@ export default class Home extends React.Component{
         };
     }
 
-    //just using static date and tickers for now to keep things simple for testing
+    //just using tickers for now to keep things simple for testing & API does not allow for top performers without $$$
     getData = () =>{
         // Define function grab data from API
         var xmlHttp = new XMLHttpRequest();
+        var todayDate = new Date().toISOString().slice(0, 10);
+        //Get yesterday's date, because today's data is likely incomplete as market closes at 5 PM.
+        var yesterdayDate = todayDate.replace(todayDate[9], (parseInt(todayDate.charAt(9)) - 1))
 
         if(this.state.stockCategory === "technology"){
             //StockOne Data Parse
-            const StockOnedataURL = 'https://api.polygon.io/v1/open-close/AAPL/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockOnedataURL = 'https://api.polygon.io/v1/open-close/AAPL/' + yesterdayDate + '?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockOnedataURL, false );
             xmlHttp.send( null );
             const StockOnedata = JSON.parse(xmlHttp.responseText);
@@ -55,7 +58,7 @@ export default class Home extends React.Component{
 
             //repeat process for StockThree and StockTwo
 
-            const StockThreedataURL = 'https://api.polygon.io/v1/open-close/GOOGL/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockThreedataURL = 'https://api.polygon.io/v1/open-close/GOOGL/'+ yesterdayDate +'?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockThreedataURL, false );
             xmlHttp.send( null );
             const StockThreedata = JSON.parse(xmlHttp.responseText);
@@ -65,7 +68,7 @@ export default class Home extends React.Component{
             const StockThreePrice = StockThreedata.close;
             const StockThreeName = StockThreedata.symbol;
 
-            const StockTwodataURL = 'https://api.polygon.io/v1/open-close/MSFT/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockTwodataURL = 'https://api.polygon.io/v1/open-close/MSFT/'+ yesterdayDate +'?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockTwodataURL, false );
             xmlHttp.send( null );
             const StockTwodata = JSON.parse(xmlHttp.responseText);
@@ -81,7 +84,7 @@ export default class Home extends React.Component{
                         StockThreeStockPrice: StockThreePrice, StockThreeDailyChange: StockThreeDailyChange, StockThreePositive: StockThreePositive, StockThreeName: StockThreeName});
         }
         else{
-            const StockOnedataURL = 'https://api.polygon.io/v1/open-close/SWN/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockOnedataURL = 'https://api.polygon.io/v1/open-close/SWN/'+ yesterdayDate +'?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockOnedataURL, false );
             xmlHttp.send( null );
             const StockOnedata = JSON.parse(xmlHttp.responseText);
@@ -95,7 +98,7 @@ export default class Home extends React.Component{
 
             //repeat process for StockThree and StockTwo
 
-            const StockThreedataURL = 'https://api.polygon.io/v1/open-close/XOM/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockThreedataURL = 'https://api.polygon.io/v1/open-close/XOM/'+ yesterdayDate +'?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockThreedataURL, false );
             xmlHttp.send( null );
             const StockThreedata = JSON.parse(xmlHttp.responseText);
@@ -105,7 +108,7 @@ export default class Home extends React.Component{
             const StockThreePrice = StockThreedata.close;
             const StockThreeName = StockThreedata.symbol;
 
-            const StockTwodataURL = 'https://api.polygon.io/v1/open-close/TRMD/2022-04-12?adjusted=true&apiKey=' + api_key;
+            const StockTwodataURL = 'https://api.polygon.io/v1/open-close/TRMD/'+ yesterdayDate +'?adjusted=true&apiKey=' + api_key;
             xmlHttp.open( "GET", StockTwodataURL, false );
             xmlHttp.send( null );
             const StockTwodata = JSON.parse(xmlHttp.responseText);
@@ -150,7 +153,7 @@ export default class Home extends React.Component{
         var StockTwoNewsURL = StockTwodata.results[0].article_url
         var StockTwoNewsPublisher = StockTwodata.results[0].publisher.name
         //Check if the news is the same as the prior news title, if it is, then change it to the next one in the array as long as it exists.
-        if (StockTwoNewsTitle == StockOneNewsTitle && StockTwodata.results[1].title != null){
+        if (StockTwoNewsTitle === StockOneNewsTitle && StockTwodata.results[1].title != null){
             StockTwoNewsTitle = StockTwodata.results[1].title
             StockTwoNewsURL = StockTwodata.results[1].article_url
             StockTwoNewsPublisher = StockTwodata.results[1].publisher.name
@@ -169,13 +172,13 @@ export default class Home extends React.Component{
         var StockThreeNewsPublisher = StockThreedata.results[0].publisher.name
 
         //Check if the news is the same as the prior news titles, if it is, then change it to the next one in the array as long as it exists.
-        if (StockThreeNewsTitle == StockOneNewsTitle && StockThreedata.results[1].title != null){
+        if (StockThreeNewsTitle === StockOneNewsTitle && StockThreedata.results[1].title != null){
             StockThreeNewsTitle = StockThreedata.results[1].title
             StockThreeNewsURL = StockThreedata.results[1].article_url
             console.log(StockThreeNewsTitle)
             StockThreeNewsPublisher = StockThreedata.results[1].publisher.name
         }
-        if (StockThreeNewsTitle == StockTwoNewsTitle && StockThreedata.results[2].title != null){
+        if ((StockThreeNewsTitle === StockTwoNewsTitle || StockThreeNewsTitle === StockOneNewsTitle) && StockThreedata.results[2].title != null){
             StockThreeNewsTitle = StockThreedata.results[2].title
             StockThreeNewsURL = StockThreedata.results[2].article_url
             console.log(StockThreeNewsTitle)
@@ -192,13 +195,19 @@ export default class Home extends React.Component{
     //Set state of stock category based on what is selected by user
     stockCategory = e =>{
         this.setState({stockCategory: e.target.value})
+        if(e.target.value === "technology"){
+            this.setState({StockOneName: "AAPL", StockTwoName: "MSFT", StockThreeName: "GOOGL"})
+        }
+        else{
+            this.setState({StockOneName: "SWM", StockTwoName: "XOM", StockThreeName: "TRMD"})
+        }
     }
 
     render(){
         /* Define styles for buttons based on which one is active */
         const newsStyle = this.state.activeComponent === 'news' ? 'homeContentButtonActive' : 'homeContentButton',
-            performersStyle = this.state.activeComponent === 'performers' ? 'homeContentButtonActive' : 'homeContentButton',
-            bigPlayersStyle = this.state.activeComponent === 'bigplayers' ? 'homeContentButtonActive' : 'homeContentButton';
+            performersStyle = this.state.activeComponent === 'performers' ? 'homeContentButtonActive' : 'homeContentButton';
+           // bigPlayersStyle = this.state.activeComponent === 'bigplayers' ? 'homeContentButtonActive' : 'homeContentButton';
 
       return(
 

@@ -5,35 +5,35 @@ export default class Performers extends React.Component{
 
 
     render(){
-        const AAPLColor = this.props.AAPLPositive ? 'positive' : 'negative';
-        const AAPLBox = this.props.AAPLPositive ? 'performer positiveBox' : 'performer negativeBox';
-        const MSFTColor = this.props.MSFTPositive ? 'positive' : 'negative';
-        const MSFTBox = this.props.MSFTPositive ? 'performer positiveBox' : 'performer negativeBox';
-        const GOOGLColor = this.props.GOOGLPositive ? 'positive' : 'negative';
-        const GOOGLBox = this.props.GOOGLPositive ? 'performer positiveBox' : 'performer negativeBox';
+        const StockOneColor = this.props.StockOnePositive ? 'positive' : 'negative';
+        const StockOneBox = this.props.StockOnePositive ? 'performer positiveBox' : 'performer negativeBox';
+        const StockTwoColor = this.props.StockTwoPositive ? 'positive' : 'negative';
+        const StockTwoBox = this.props.StockTwoPositive ? 'performer positiveBox' : 'performer negativeBox';
+        const StockThreeColor = this.props.StockThreePositive ? 'positive' : 'negative';
+        const StockThreeBox = this.props.StockThreePositive ? 'performer positiveBox' : 'performer negativeBox';
         return(
             <div className='performersContainer'>
-                <div className={AAPLBox} id='1' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
+                <div className={StockOneBox} id='1' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
                     <div className='performerText'>
-                        <h1 className={AAPLColor}>AAPL</h1>
-                        <h1  className={AAPLColor}>${this.props.AAPLPrice}</h1>
-                        <h1  className={AAPLColor}>{this.props.AAPLDailyChange}%</h1>
+                        <h1 className={StockOneColor}>{this.props.StockOneName}</h1>
+                        <h1  className={StockOneColor}>${this.props.StockOnePrice}</h1>
+                        <h1  className={StockOneColor}>{this.props.StockOneDailyChange}%</h1>
                     </div>
                 </div>
 
-                <div className={GOOGLBox} id='2' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
+                <div className={StockThreeBox} id='2' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
                     <div className='performerText'>
-                        <h1 className={GOOGLColor}>GOOGL</h1>
-                        <h1  className={GOOGLColor}>${this.props.GOOGLPrice}</h1>
-                        <h1  className={GOOGLColor}>{this.props.GOOGLDailyChange}%</h1>
+                        <h1 className={StockThreeColor}>{this.props.StockThreeName}</h1>
+                        <h1  className={StockThreeColor}>${this.props.StockThreePrice}</h1>
+                        <h1  className={StockThreeColor}>{this.props.StockThreeDailyChange}%</h1>
                     </div>
                 </div>
                 
-                <div className={MSFTBox} id='3' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
+                <div className={StockTwoBox} id='3' onMouseOver={this.hoverEffect} onMouseLeave={this.unhoverEffect}>
                     <div className='performerText'>
-                        <h1 className={MSFTColor}>MSFT</h1>
-                        <h1  className={MSFTColor}>${this.props.MSFTPrice}</h1>
-                        <h1  className={MSFTColor}>{this.props.MSFTDailyChange}%</h1>
+                        <h1 className={StockTwoColor}>{this.props.StockTwoName}</h1>
+                        <h1  className={StockTwoColor}>${this.props.StockTwoPrice}</h1>
+                        <h1  className={StockTwoColor}>{this.props.StockTwoDailyChange}%</h1>
                     </div>
                 </div>
             </div>

@@ -7,9 +7,9 @@ export default class ComponentHandler extends React.Component{
     render(){
         if(this.props.activeComponent === "news"){
             return(
-                <News AAPLNewsTitle = {this.props.AAPLNewsTitle} AAPLNewsURL= {this.props.AAPLNewsURL} AAPLNewsPublisher = {this.props.AAPLNewsPublisher}
-                      MSFTNewsTitle = {this.props.MSFTNewsTitle} MSFTNewsURL= {this.props.MSFTNewsURL} MSFTNewsPublisher = {this.props.MSFTNewsPublisher}
-                      GOOGLNewsTitle = {this.props.GOOGLNewsTitle} GOOGLNewsURL= {this.props.GOOGLNewsURL} GOOGLNewsPublisher = {this.props.GOOGLNewsPublisher}
+                <News StockOneNewsTitle = {this.props.StockOneNewsTitle} StockOneNewsURL= {this.props.StockOneNewsURL} StockOneNewsPublisher = {this.props.StockOneNewsPublisher}
+                      StockTwoNewsTitle = {this.props.StockTwoNewsTitle} StockTwoNewsURL= {this.props.StockTwoNewsURL} StockTwoNewsPublisher = {this.props.StockTwoNewsPublisher}
+                      StockThreeNewsTitle = {this.props.StockThreeNewsTitle} StockThreeNewsURL= {this.props.StockThreeNewsURL} StockThreeNewsPublisher = {this.props.StockThreeNewsPublisher}
                 />
             )
         }
@@ -20,9 +20,9 @@ export default class ComponentHandler extends React.Component{
         }
         else{
             return(
-                <Performers AAPLPrice={this.props.AAPLPrice} AAPLDailyChange = {this.props.AAPLDailyChange} AAPLPositive = {this.props.AAPLPositive}
-                            MSFTPrice={this.props.MSFTPrice} MSFTDailyChange = {this.props.MSFTDailyChange} MSFTPositive = {this.props.MSFTPositive}
-                            GOOGLPrice={this.props.GOOGLPrice} GOOGLDailyChange = {this.props.GOOGLDailyChange} GOOGLPositive = {this.props.GOOGLPositive}
+                <Performers StockOnePrice={this.props.StockOnePrice} StockOneDailyChange = {this.props.StockOneDailyChange} StockOnePositive = {this.props.StockOnePositive} StockOneName = {this.props.StockOneName}
+                            StockTwoPrice={this.props.StockTwoPrice} StockTwoDailyChange = {this.props.StockTwoDailyChange} StockTwoPositive = {this.props.StockTwoPositive} StockTwoName = {this.props.StockTwoName}
+                            StockThreePrice={this.props.StockThreePrice} StockThreeDailyChange = {this.props.StockThreeDailyChange} StockThreePositive = {this.props.StockThreePositive} StockThreeName = {this.props.StockThreeName}
                             />
             )
         }
